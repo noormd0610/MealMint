@@ -1,0 +1,189 @@
+<% layout("/layout/boilerplate") -%>
+<script>
+  let restaurant = <%- JSON.stringify(restaurant) %>;
+</script>
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card restaurant_card p-4 border-0">
+
+          <!-- Restaurant Info (Top) -->
+          <div class="card-body text-start">
+            <h4 class="card-title"><strong>
+                <%= restaurant.name %>
+              </strong></h4>
+            <p class=" card-text mb-1"><strong>Owner:</strong>
+              <%= restaurant.owner.username %>
+            </p>
+            <p class="card-text mb-1"><strong>Popular Dishes:</strong>
+              <%= restaurant.foods.join(", ") %></p>
+          <p class=" card-text mb-1"><strong>Type:</strong>
+                <%= restaurant.type %>
+            </p>
+            <p class="card-text mb-1"><strong>Address:</strong>
+              <%= restaurant.address %>
+            </p>
+
+          </div>
+
+          <!-- Restaurant Image (Bottom)-->
+          <div class="">
+            <img src="<%= restaurant.coverImage %>" alt="Restaurant Cover Image"
+              class="img-fluid rounded restaurant_coverimg" style="height:400px; width: 100%;">
+
+            <% if(currUser&&currUser.id==restaurant.owner.id){ %>
+              <div class="btns mt-4 ">
+                <a href="/restaurant/<%= restaurant.id %>/edit" type="button" class="btn btn-outline-primary">Update</a>
+
+                <form action="/restaurant/<%= restaurant.id %>?_method=DELETE" method="post">
+                  <button type="submit" class="btn btn-outline-danger ms-4">Delete</button>
+                </form>
+              </div>
+              <% } %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Navigation Tabs -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-10">
+          <div class="short-nav d-flex justify-content-between flex-wrap">
+            <a href="#" data-target="map" class="tab-link active flex-fill text-center">map</a>
+            <a href="#" data-target="order" class="tab-link flex-fill text-center">Order Online</a>
+            <a href="#" data-target="reviews" class="tab-link flex-fill text-center">Reviews</a>
+            <a href="#" data-target="photos" class="tab-link flex-fill text-center">Photos</a>
+            <a href="#" data-target="menu" class="tab-link flex-fill text-center">Menu</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="line mx-auto" style="width: 90%;">
+
+      <!-- Tab Content Sections -->
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+          <!-- maps -->
+          <div id="map" class="tab-content">
+         <h5>MAP</h5>
+ <div id="map"></div>
+
+          </div>
+          <!-- Order Online -->
+          <div id="order" class="tab-content d-none">
+            <h5>Order Online</h5>
+            <p>Order your favorite dishes online here.</p>
+          </div>
+
+          <!-- Reviews -->
+          <div id="reviews" class="tab-content d-none">
+            <% if(currUser){ %>
+              <div class="mt-4 mb-4">
+                <h5>Leave a review</h5>
+                <form action="/restaurant/<%= restaurant.id %>/review" class="needs-validation" novalidate
+                  class="mb-3 mt-4" method="post">
+                  <div class="">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="review[username]" id="username" class="form-control" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="">
+                    <fieldset class="starability-slot">
+                      <h6>Rating</h6>
+                      <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                        aria-label="No rating." />
+                      <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                      <label for="first-rate1" title="Terrible">1 star</label>
+                      <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                      <label for="first-rate2" title="Not good">2 stars</label>
+                      <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                      <label for="first-rate3" title="Average">3 stars</label>
+                      <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                      <label for="first-rate4" title="Very good">4 stars</label>
+                      <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                      <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                  </div>
+                  <br>
+                  <div class="">
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea name="review[comment]" id="comment" cols="15" rows="4" class="form-control"
+                      required></textarea>
+                    <div class="valid-feedback">
+                      Looks great!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please Provide a comment.
+                    </div>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-outline-danger mt-3">Submit</button>
+                </form>
+              </div>
+              <% } %>
+
+
+                <div class="">
+                  <% if(restaurant.reviews.length>0) {%>
+                    <h3 style="color: red;"><b>Reviews</b></h3>
+                    <% } %>
+                      <div class="row">
+                        <% restaurant.reviews.forEach(review=> { %>
+                          <div class="col-12 col-md-6 mb-3">
+                            <div class="card border p-3 h-100">
+                              <div>
+                                <b>
+                                  <%= review.createdBy.username %>
+                                </b>
+                              </div>
+                              <div>
+
+                                <p class="starability-result" data-rating="<%= review.rating %>">
+                                  
+                                </p>
+                                </p>
+                              </div>
+                              <div>
+                                <%= review.comment %>
+                              </div>
+                              <div class="mt-3">
+                                <form action="/restaurant/<%= restaurant.id %>/review/<%= review._id %>?_method=DELETE"
+                                  method="POST">
+                                  <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <% }) %>
+                      </div>
+
+                </div>
+          </div>
+
+          <div id="photos" class="tab-content d-none">
+            <h5>Photos</h5>
+            <p>Gallery of food and restaurant photos.</p>
+          </div>
+
+          <div id="menu" class="tab-content d-none">
+            <h5>Menu</h5>
+            <p>Complete restaurant menu listed here.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="line mx-auto" style="width: 90%;">
+    </div>
+  </div>
+
+ <script src="/js/map.js"></script>

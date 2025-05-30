@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<%- include("../includes/head.ejs") %>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet">
+
+    <body>
+        <div class="nav-bar">
+            <%- include("../includes/navbar.ejs") %>
+        </div>
+        <div class="container-fluid main-body">
+            <%- include("../includes/flash.ejs") %>
+            <%- body -%>
+        </div>
+        <div class="footer">
+            <%- include("../includes/footer.ejs") %>
+        </div>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
+        <%- include("../includes/script_links.ejs") %>
+    </body>
+
+</html>

@@ -1,0 +1,184 @@
+<% layout("/layout/boilerplate")-%>
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-10 filters">
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-fire"></i></div>
+                    <p>Trending</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-utensils"></i></i></div>
+                    <p>Cuisine</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-money-check-dollar"></i></div>
+                    <p>payments</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-stopwatch"></i></i></div>
+                    <p>Time</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-tags"></i></div>
+                    <p>Offers</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-pizza-slice"></i></i></div>
+                    <p>Pizza</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><span class="material-symbols-outlined">
+chef_hat
+</span></i></div>
+                    <p>Made By</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-leaf"></i></div>
+                    <p>Preferences</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-gifts"></i></div>
+                    <p>Party</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-cake-candles"></i></div>
+                    <p>Cake</p>
+                </div>
+
+                <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-burger"></i></div>
+                    <p>Burgers</p>
+                </div>
+                
+                   <div class="filter">
+                    <div class="div icon"><i class="fa-solid fa-truck"></i></div>
+                    <p>Delivery</p>
+                </div>
+            </div>
+            <div class="col-2 checkBtn mb-4 pb-2 ">
+                <div class="form-check form-switch form-check-reverse mt-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked">
+                    <label class="form-check-label" for="switchCheckChecked">Display Total After Taxes</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-4">
+                <h4><b>What's on your mind?</b></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="scroll-wrapper">
+                <button class="scroll-btn left">&#10094;</button>
+
+                <div class="scroll-menu">
+                    <div class="dish">
+                        <img src="/assests/dosa.avif" alt="Dosa" style="border-radius: 50%;">
+                        <p>Dosa</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/panner.avif" alt="Paneer">
+                        <p>Panner</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/parata.avif" alt="Paratha">
+                        <p>Parata</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/sandwith.avif" alt="Sandwich" style="border-radius: 50%;">
+                        <p>Sandwith</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/chole bature.avif" alt="Chole Bature">
+                        <p>Chole Bathure</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/cake.avif" alt="Cake">
+                        <p>Cake</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/idli.avif" alt="Idli">
+                        <p>Idli</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/jalebi.avif" alt="Jalebi" style="border-radius: 50%;">
+                        <p>Jalebi</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/kachori.avif" alt="Kachori" style="border-radius: 50%;">
+                        <p>Kachori</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/sweeets.avif" alt="Sweets">
+                        <p>Sweets</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/thali.avif" alt="Thali">
+                        <p>Thali</p>
+                    </div>
+                    <div class="dish">
+                        <img src="/assests/veg-meal.avif" alt="Veg Meal" style="border-radius: 50%;">
+                        <p>Veg Meal</p>
+                    </div>
+                </div>
+
+                <button class="scroll-btn right">&#10095;</button>
+            </div>
+        </div>
+        <div class="row">
+            <% for(restaurant of restaurants){%>
+                <div class="col-12 col-md-4 col-xl-4 food-item">
+                    <div class="card border-0 mb-4 mt-4 " style="width: 100%;">
+                        <a href="/restaurant/<%= restaurant.id %>"><img src="<%= restaurant.coverImage %>"
+                                class="card-img-top m-2" alt="..."
+                                style="height: 300px; width: 97%; border-radius: 15px;"></a>
+                        <div class="card-body p-2" style="font-size: 14px; line-height: 1.4;">
+                            <div class="straight">
+                                <h5 class="mb-1"><b>
+                                        <%= restaurant.name %>
+                                    </b></h5>
+                                <p class="mb-0">rating</p>
+                            </div>
+                            <div class="straight mt-2 ">
+                                <% const foodList=restaurant.foods.join(", "); %>
+                                <h6 class=" mb-1">
+                                    <%= foodList.length>30 ? foodList.slice(0,25) +"...." :foodList%>
+                                        </h6>
+                                        <p class=" mb-0"> &#8377;<%= restaurant.price.toLocaleString("en-IN") %> <span
+                                                    class="gst">+5% GST</span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
+        <script>
+            let checkInfo = document.querySelector("#switchCheckChecked");
+            let gsts = document.querySelectorAll(".gst");
+            checkInfo.addEventListener("change", function () {
+                if (this.checked) {
+                    for (gst of gsts) {
+                        gst.classList.remove("gst");
+
+                    }
+                }
+                if (!this.checked) {
+                    for (gst of gsts) {
+                        gst.classList.add("gst");
+
+                    }
+                }
+
+            })
+        </script>

@@ -1,0 +1,462 @@
+ html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content-overlay h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.content-overlay h3 {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.btn-light {
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-light:hover {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .content-overlay h1 {
+    font-size: 2.5rem;
+  }
+
+  .content-overlay h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.scroll-down {
+  position: relative;
+  top: 90px;
+  font-weight: 700;
+}
+
+.material-symbols-outlined {
+  position: relative;
+  top: 5px;
+}
+
+.scrolld {
+  text-align: center;
+  animation: bounce 1s infinite;
+  color: #fff;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.bg-image {
+  background-image: url('/assests/white bg.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.caption_section h1,
+.caption_section p {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.caption_section h1 {
+  color: #E23744 !important;
+  margin-top: 160px;
+  font-weight: 900;
+}
+
+.caption_section p {
+  margin-bottom: 160px;
+  font-weight: 200 !important;
+}
+
+.feature_section {
+  background: linear-gradient(0deg, #FFFFFF 0%, #FFEDEF 100%);
+}
+
+.feature_section h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #E23744 !important;
+  margin-top: 100px;
+}
+
+.feature_section p {
+  margin-bottom: 60px;
+}
+
+.mini-cards {
+  margin: 4px;
+  height: 140px;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.68);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mini-cards:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.phn_pic {
+  border-radius: 20px;
+}
+
+.footer_section {
+  position: relative;
+  top: 60px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+ 
+
+.message {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+ 
+
+.home-btn:hover {
+  background-color: #e64a19;
+}
+
+@media (max-width: 600px) {
+  .error-code {
+    font-size: 15vw;
+  }
+}
+ /* Make the entire page a vertical flexbox */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the page takes full height */
+  margin: 0;
+}
+
+/* Sticky navbar at the top */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* This allows the main content to grow and push footer down */
+.main-body {
+  flex: 1;
+}
+
+/* Footer stays at the bottom, but not fixed */
+.footer {
+  width: 100%;
+}
+/* 404 page */
+.page-404-wrapper {
+  margin: 0;
+  background-color: #ffffff; /* white background */
+  color: #333; /* dark text for contrast */
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+.page-404-wrapper .error-code {
+  font-size: 120px;
+  font-weight: bold;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-404-wrapper .digit-404 {
+  color: #ff4d4d; /* light red */
+  -webkit-text-stroke: 1px #ff4d4d;
+  position: relative;
+}
+
+.page-404-wrapper .digit-center {
+  color: #e60000; /* bright red */
+  text-shadow: 0 0 10px #ff9999, 0 0 20px #ff9999;
+  -webkit-text-stroke: 0;
+}
+
+.page-404-wrapper .info-text {
+  max-width: 500px;
+  margin: 20px auto;
+  font-size: 16px;
+  color: #666;
+}
+
+.page-404-wrapper .home-btn-404 {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 2px solid #ff4d4d;
+  color: #ff4d4d;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.page-404-wrapper .home-btn-404:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.navbar {
+  padding-top: 1rem;      
+  padding-bottom: 1rem;   
+  min-height: 80px;      
+}
+ 
+ 
+ .scroll-menu {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  background-color: #f8f6f6;
+  gap: 10px;
+  scrollbar-width: thin;
+   padding: 40px 40px;
+   justify-content: space-evenly !important;
+   
+}
+
+.scroll-menu img {
+  width: 1800px;
+  height: 180px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  margin: 20px 14px;
+}
+ .scroll-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.scroll-menu {
+  display: flex;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 30px 40px;
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+}
+
+.scroll-menu::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.scroll-menu img ,.dish img  {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+.dish p {
+  margin-top: 8px;
+  font-weight: 400;
+  color: #333;
+  font-size: 20px;
+}
+.straight{
+  display: flex;
+  flex-direction: row;
+ justify-content: space-between;
+}
+ 
+
+.food-item:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); /* No offset, equal shadow around */
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ffffffed;
+  background-color: #fff; /* Optional for better contrast */
+}
+ 
+ .name{
+  font-size: 38px;
+  font-weight: 500;
+ }
+ .restaurant_body{
+  line-height: 14px;
+ }
+ .short-nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+ .short-nav a{
+ 
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 2rem;
+  color: #00000081;
+ }
+ .short-nav a:hover{
+  color: #000;
+ }
+.line{
+  width: 70%;
+ 
+}
+.short-nav a {
+    text-decoration: none;
+    padding: 10px 5px;
+    font-size: 14px;
+    color: #333;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .short-nav a.active {
+    background-color: #d9230f;
+    color: white;
+    font-weight: 500;
+  }
+
+ 
+
+  @media (max-width: 576px) {
+    .short-nav a {
+      font-size: 12px;
+      padding: 8px 4px;
+    }
+  }
+ 
+ .btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+ }
+
+ 
+#map {   
+height: 400px;
+ }
+ 
+.gst{
+  display: none;
+}
+.checkBtn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 0, 0, 0.324);
+  border-radius: 50px;
+  
+  
+}
+ .icon{
+margin-left: 20px;
+ }
+ .icon:hover,p:hover{
+  opacity: 0.8;
+ }
+ .filters{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  
+ }
